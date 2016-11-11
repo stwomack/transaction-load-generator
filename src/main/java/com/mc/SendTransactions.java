@@ -16,7 +16,7 @@ public class SendTransactions {
     private static final int MESSAGE_COUNT = 1;
 
     @Bean
-    @InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "${fixedDelay}", maxMessagesPerPoll = "2"))
+    @InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "${fixedDelay}", maxMessagesPerPoll = "${messagesPerPoll}"))
     public MessageSource<String> send() throws IOException {
         return () -> new GenericMessage<>("hi");
     }
